@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Excel, Python, R 활용 비즈니스 데이터 분석</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+            max-width: 900px;
+            margin: auto;
+            color: #333;
+        }
+        .title {
+            font-size: 3em;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 0;
+            background: linear-gradient(90deg, #4e54c8, #8f94fb);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .subtitle {
+            font-size: 1.5em;
+            text-align: center;
+            color: #666;
+            margin-top: 0.2em;
+            margin-bottom: 1em;
+        }
+        #mission-label {
+            margin: 0 17px;
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+        button {
+            background: #4e54c8;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            font-size: 1em;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover:not(:disabled) {
+            background: #3b3fc1;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: default;
+        }
+        pre {
+            background: #f9f9fa;
+            padding: 20px;
+            overflow-x: auto;
+            border-radius: 6px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            line-height: 1.4;
+            font-family: Consolas, 'Courier New', monospace;
+        }
+        footer {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+        }
+        #footer-credit {
+            font-size: 0.9em;
+            color: #888;
+            text-decoration: none;
+        }
+        #footer-credit:hover {
+            color: #4e54c8;
+        }
+.tab {
+  padding: 10px 16px;
+  margin-right: 6px;
+  background: #eceff9;              /* 부드러운 라벤더 톤 */
+  color: #4e4e60;                  /* 조금 더 진한 네이비 그레이 */
+  border: none;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.tab:hover {
+  background: #e0e2f5;             /* 마우스 오버 시 약간 진해지도록 */
+  color: #ff00ff;                                       /* 흰색 글자 */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
+}
+
+/* 2) 활성 탭 스타일 */
+.tab.active {
+  background: linear-gradient(90deg, #4e54c8, #8f94fb); /* 그라데이션 배경 */
+  color: #ffffff;                                       /* 흰색 글자 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-bottom: 3px solid #4e54c8;                     /* 탭과 콘텐츠 경계 강조 */
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="title">Excel, Python, R 활용 비즈니스 데이터 분석</h1>
+        <h2 class="subtitle">미션별 코드</h2>
+    </header>
+
+<div class="tabs" id="tabs"></div><br>
+<h3 id="mission-label"></h3>   
+<div class="code-box">
+  <pre><code id="code-content"></code></pre>
+</div>
+
+    <footer>
+        <a id="footer-credit" href="https://cantips.com" target="_blank"></a>
+    </footer>
+
+    <script>
+        const missions = [
+            { title: 'Mission 25', code: `MISSION 25
+
+p. 240
+
+[1] 
+
+n = int(input("How many *? ")) # input으로 입력받은 숫자는 문자로 처리하므로 int 함수로 숫자로 변환
+print(str(n)+" *s in "+str(n)+" lines.") # 문자열을 결합할 때 유형을 통일하기 위해 숫자 n을 string으로 변환  
+for i in range(n):
+    print("*"*i) # string에 숫자를 곱하면 그만큼 string 내용이 반복 표시
+
+[2]
+
+n = int(input("How many *? ")) print(str(n)+" *s in "+str(n)+" lines.")
+for i in range(1,n+1):
+    print("*"*i)
+
+    
+p. 241    
+    
+shape = input("What shape(s) or character(s)? ")
+print("You chose " + shape)
+n = int(input("How many " + shape + "? "))
+print(str(n) + " " + shape + "(s) in "+str(n)+" lines.")        
+for i in range(1,n+1):
+    print(shape*i)
+
+[1]
+
+shape = input("What shape(s) or character(s)? ")
+print("You chose " + shape)
+n = int(input("How many " + shape + "? "))
+print(str(n) + " " + shape + "(s) in "+str(n)+" lines.")        
+for i in range(1,n+1):
+    print(" "*(n-i), end="")
+    print(shape*i)
+
+
+p. 242
+
+[2]
+
+shape = input("What shape(s) or character(s)? ")
+nos = len(shape) # 입력 받은 문자 수 계산
+print("You chose " + shape + " with " + str(nos) + " character(s).")
+n = int(input("How many " + shape + "? "))
+print(str(n) + " " + shape + "(s) in "+str(n)+" lines.")        
+for i in range(1,n+1):
+    print(" "*(n-i)*nos, end="") # 입력 받은 문자 수만큼 곱하여 빈 칸 생성
+    print(shape*i)
+
+[1]
+
+shape = input("What shape(s) or character(s)? ")
+nos = len(shape)
+print("You chose " + shape + " with " + str(nos) + " character(s).")
+n = int(input("How many " + shape + "? "))
+print(str(n) + " " + shape + "(s) in "+str(n)+" lines.")        
+for i in range(1,n+1):
+    print(" "*i, end="")
+    print(shape*n)
+
+
+p. 243
+
+[2]
+
+shape = input("What shape(s) or character(s)? ")
+nos = len(shape)
+print("You chose " + shape + " with " + str(nos) + " character(s).")
+n = int(input("How many " + shape + "? "))
+print(str(n) + " " + shape + "(s) in "+str(n)+" lines.")        
+for i in range(n):
+    print(" "*i, end="")
+    print(shape*n)
+
+
+shape = input("What shape(s) or character(s)? ")
+nos = len(shape)
+print("You chose " + shape + " with " + str(nos) + " character(s).")
+n = int(input("How many " + shape + "? "))
+print(str(n) + " " + shape + "(s) in "+str(n)+" lines.")        
+for i in range(n):
+    print(" "*i, end="")
+    print(shape*n)
+
+
+p. 244
+
+[1]
+
+shape = input("What shape(s) or character(s)? ")
+nos = len(shape)
+print("You chose " + shape + " with " + str(nos) + " character(s).")
+n = int(input("How many " + shape + "? "))
+print(str(n) + " " + shape + "(s) in "+str(n)+" lines.")        
+for i in range(n):
+    print(" "*i, end="")
+    print(shape*(n-i))
+
+[2]
+
+shape = input("What shape(s) or character(s)? ")
+nos = len(shape)
+print("You chose " + shape + " with " + str(nos) + " character(s).")
+n = int(input("How many " + shape + "? "))
+print(str(n) + " " + shape + "(s) in "+str(n)+" lines.")        
+for i in range(n):
+    print(" "*i*nos, end="")
+    print(shape*(n-i))
+
+
+p. 245
+
+shape = input("What shape(s) or character(s)? ")
+nos = len(shape)
+print("You chose " + shape + " with " + str(nos) + " character(s).")
+n = int(input("How many " + shape + "? "))
+print(str(n) + " " + shape + "(s) in "+str(n)+" lines.")        
+for i in range(n):
+    print(" "*(n-i-1)*nos, end="")
+    print(shape*(i*2+1)) # 각 줄의 문자는 홀수(짝수 + 1)로 생성되도록 계산
+
+
+shape = input("What shape(s) or character(s)? ")
+nos = len(shape)
+print("You chose " + shape + " with " + str(nos) + " character(s).")
+n = int(input("How many " + shape + "? "))
+print(str(n) + " " + shape + "(s) in "+str(n)+" lines.")        
+for i in range(n):
+    print(" "*i*nos, end="")
+    print(shape*((n-i)*2-1))
+
+` },
+            { title: 'Mission 26', code: `MISSION 26
+
+p. 246
+
+[1] 
+
+n <- as.integer(readline(prompt = "How many *? ")) # 사용자로부터 입력받고 정수로 변환
+cat(paste(n, "*s in", n, "lines.\n")) # 입력받은 숫자를 문자열과 결합하여 출력
+for (i in 0:(n-1)) {
+  cat(paste(rep("*", i), collapse = ""), "\n") # i개의 별표 출력
+}
+
+
+p. 247
+
+[2]
+
+n <- as.integer(readline(prompt = "How many *? ")) # 사용자로부터 입력받고 정수로 변환
+cat(paste(n, "*s in", n, "lines.\n")) # 입력받은 숫자를 문자열과 결합하여 출력
+for (i in 1:n) {
+  cat(paste(rep("*", i), collapse = ""), "\n") # i개의 별표 출력
+}
+
+
+shape <- readline(prompt = "What shape(s) or character(s)? ")
+cat("You chose", shape, "\n")
+n <- as.integer(readline(prompt = paste("How many", shape, "? ")))
+cat(paste(n, shape, "(s) in", n, "lines.\n"))
+for (i in 1:n) {
+  cat(paste(rep(shape, i), collapse = ""), "\n")
+}
+
+
+[1]
+
+shape <- readline(prompt = "What shape(s) or character(s)? ")
+cat("You chose", shape, "\n")
+n <- as.integer(readline(prompt = paste("How many", shape, "? ")))
+cat(paste(n, shape, "(s) in", n, "lines.\n"))
+for (i in 1:n) {
+  spaces <- paste(rep(" ", n - i), collapse = "")
+  shapes <- paste(rep(shape, i), collapse = "")
+  cat(spaces, shapes, "\n")
+}
+
+
+p. 248
+
+[2]
+
+shape <- readline(prompt = "What shape(s) or character(s)? ")
+nos <- nchar(shape) # 입력 받은 문자 수 계산
+cat("You chose", shape, "with", nos, "character(s).\n")
+n <- as.integer(readline(prompt = paste("How many", shape, "? ")))
+cat(paste(n, shape, "(s) in", n, "lines.\n"))
+for (i in 1:n) {
+  cat(paste(rep(" ", (n - i) * nos), collapse = ""), end="") # 입력 받은 문자 수만큼 곱하여 빈 칸 생성
+  cat(paste(rep(shape, i), collapse = ""), "\n")
+}
+
+
+p. 249
+
+[1]
+
+shape <- readline(prompt = "What shape(s) or character(s)? ")
+nos <- nchar(shape)
+cat("You chose", shape, "with", nos, "character(s).\n")
+n <- as.integer(readline(prompt = paste("How many", shape, "? ")))
+cat(paste(n, shape, "(s) in", n, "lines.\n"))
+for (i in 1:n) {
+  cat(paste(rep(" ", i), collapse = ""), shape, sep = "")
+  cat(paste(rep(shape, n - i), collapse = ""), "\n")
+}
+
+[2]
+
+shape <- readline(prompt = "What shape(s) or character(s)? ")
+nos <- nchar(shape)
+cat("You chose", shape, "with", nos, "character(s).\n")
+n <- as.integer(readline(prompt = paste("How many", shape, "? ")))
+cat(paste(n, shape, "(s) in", n, "lines.\n"))
+for (i in 0:(n-1)) {
+  spaces <- paste(rep(" ", i), collapse = "")
+  shapes <- paste(rep(shape, n), collapse = "")
+  cat(spaces, shapes, "\n")
+}
+
+
+p. 250
+
+shape <- readline(prompt = "What shape(s) or character(s)? ")
+nos <- nchar(shape)
+cat("You chose", shape, "with", nos, "character(s).\n")
+n <- as.integer(readline(prompt = paste("How many", shape, "? ")))
+cat(paste(n, shape, "(s) in", n, "lines.\n"))
+for (i in 0:(n-1)) {
+  cat(paste(rep(shape, n-i), collapse = ""), "\n")
+}
+
+[1]
+
+shape <- readline(prompt = "What shape(s) or character(s)? ")
+nos <- nchar(shape)
+cat("You chose", shape, "with", nos, "character(s).\n")
+n <- as.integer(readline(prompt = paste("How many", shape, "? ")))
+cat(paste(n, shape, "(s) in", n, "lines.\n"))
+for (i in 0:(n-1)) {
+  spaces <- paste(rep(" ", i), collapse = "")
+  shapes <- paste(rep(shape, n-i), collapse = "")
+  cat(spaces, shapes, "\n")
+}
+
+
+p. 251
+
+[2]
+
+shape <- readline(prompt = "What shape(s) or character(s)? ")
+nos <- nchar(shape)
+cat("You chose", shape, "with", nos, "character(s).\n")
+n <- as.integer(readline(prompt = paste("How many", shape, "? ")))
+cat(paste(n, shape, "(s) in", n, "lines.\n"))
+for (i in 0:(n-1)) {
+  cat(paste(rep(" ", i * nos + (n - i - 1)), collapse = ""), shape * (n - i), "\n")
+}
+
+[1]
+
+shape <- readline(prompt = "What shape(s) or character(s)? ")
+nos <- nchar(shape)
+cat(paste("You chose", shape, "with", nos, "character(s).\n"))
+n <- as.integer(readline(prompt = paste("How many", shape, "? ")))
+cat(paste(n, shape, "(s) in", n, "lines.\n"))
+for (i in 0:(n-1)) {
+  spaces <- rep(" ", (n - i - 1) * nos)
+  shapes <- rep(shape, i * 2 + 1)
+  cat(paste(spaces, collapse = ""), paste(shapes, collapse = ""), "\n")
+}
+
+
+p. 252
+
+shape <- readline(prompt = "What shape(s) or character(s)? ")
+nos <- nchar(shape)
+cat("You chose", shape, "with", nos, "character(s).\n")
+n <- as.integer(readline(prompt = paste("How many", shape, "? ")))
+cat(paste(n, shape, "(s) in", n, "lines.\n"))
+for (i in 0:(n-1)) {
+  cat(paste(rep(" ", i * nos), collapse = ""))
+  cat(paste(rep(shape, (n - i) * 2 - 1), collapse = ""), "\n")
+}
+
+
+` },
+            { title: 'Mission 27', code: `MISSION 27
+
+p. 256
+
+import pandas as pd
+file_path = 'practice desc.csv'
+df = pd.read_csv(file_path)
+summary_statistics = df.describe()
+print(summary_statistics)
+
+
+import pandas as pd
+file_path = 'practice desc.csv'
+df = pd.read_csv(file_path)
+summary_statistics = df.describe(include="all")
+print(summary_statistics)
+
+` },
+            { title: 'Mission 28', code: `MISSION 28
+
+p. 259
+
+file_path <- "practice desc.csv"
+df <- read.csv(file_path)
+summary_statistics <- summary(df)
+print(summary_statistics)
+
+
+df <- read.csv("practice desc.csv")
+summary_statistics <- summary(df)
+print(summary_statistics)
+
+
+p. 260
+
+sales_statistics <- summary(df$판매량)
+print(sales_statistics)
+
+
+sales_variance <- var(df$판매량)
+print(paste("분산:", sales_variance))
+
+
+sales_std_dev <- sd(df$판매량)
+print(paste("표준 편차:", sales_std_dev))
+
+
+sales_variance <- round(var(df$판매량), 2)
+print(paste("분산:", sales_variance))
+
+
+sales_std_dev <- round(sd(df$판매량), 5)
+print(paste("표준 편차:", sales_std_dev))
+
+
+
+` },
+            { title: 'Mission 29', code: `MISSION 29
+
+p. 261
+
+import pandas as pd
+import statsmodels.api as sm
+
+# CSV 파일 읽기
+file_path = 'practice_reg.csv' # 파일 경로
+data = pd.read_csv(file_path)
+
+# 독립 변수와 종속 변수 설정
+X = data[['광고비', '규모']]
+y = data['매출액']
+
+# 상수항 추가
+X = sm.add_constant(X)
+
+# 회귀 모델 생성
+model = sm.OLS(y, X).fit()
+
+# 결과 출력
+print(model.summary())
+
+
+
+
+` },
+            { title: 'Mission 30', code: `MISSION 30
+
+p. 263
+
+# 필요한 라이브러리 로드
+library(readr)
+
+# CSV 파일 읽기
+file_path <- "practice reg.csv"
+data <- read_csv(file_path)
+
+# 회귀 모델 생성
+model <- lm(매출액 ~ 광고비 + 규모, data=data)
+
+# 결과 출력
+summary(model)
+
+
+
+` },
+            { title: 'Mission 31', code: `MISSION 31
+
+p. 264
+
+import pandas as pd
+import statsmodels.api as sm
+import numpy as np
+import matplotlib.pyplot as plt
+
+# CSV 파일을 읽어 데이터프레임으로 변환
+df = pd.read_csv('LR Sample (hr-pass).csv')
+
+# 독립 변수와 종속 변수 설정
+X = df['Hours']
+y = df['Pass']
+
+# 상수 추가(절편 포함)
+X = sm.add_constant(X)
+
+# 로지스틱 회귀 모델 적합
+model = sm.Logit(y, X)
+result = model.fit()
+
+# 결과 요약 출력
+print(result.summary())
+
+# 모델 계수 출력
+print(f"Intercept (β0): {result.params['const']:.4f}")
+print(f"Hours (β1): {result.params['Hours']:.4f}")
+
+# 오즈 비율 계산
+odds_ratio = np.exp(result.params)
+print(f"Odds Ratio (OR) for Intercept (β0): {odds_ratio['const']:.4f}")
+print(f"Odds Ratio (OR) for Hours (β1): {odds_ratio['Hours']:.4f}")
+
+# 로지스틱 회귀식 출력
+logistic_eq = f"log(odds) = {result.params['const']:.4f} + {result.params['Hours']:.4f} * Hours"
+print(f"Logistic Regression Equation: {logistic_eq}")
+
+# 각 시간대별 합격 확률 계산 함수
+def calculate_prob(hours, model_params):
+    log_odds = model_params['const'] + model_params['Hours'] * hours
+    probability = 1 / (1 + np.exp(-log_odds))
+    return probability
+
+# 독립 변수 범위 설정(시각화 보조 자료)
+hours_range = np.linspace(df['Hours'].min(), df['Hours'].max(), 300)
+
+# 각 시간대별 예측 확률 계산
+predicted_probs = [calculate_prob(hour, result.params) for hour in hours_range]
+
+# 시각화
+plt.scatter(df['Hours'], df['Pass'], color='blue', label='Actual Data')
+plt.plot(hours_range, predicted_probs, color='red', label='Predicted Probability')
+plt.xlabel('Hours')
+plt.ylabel('Pass')
+plt.title('Logistic Regression')
+plt.legend()
+plt.show()
+
+
+p. 267
+
+data = {
+    'Hours': [0.5, 0.75, 1, 1.25, 1.5, 1.75, 1.75, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 4, 4.25, 4.5, 4.75, 5, 5.5],
+    'Pass': [0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1]
+}
+df = pd.DataFrame(data)
+
+` },
+            { title: 'Mission 32', code: `MISSION 32
+
+p. 268
+
+# 필요한 패키지 설치 및 로드
+install.packages("readr")
+install.packages("stats")
+install.packages("ggplot2")
+
+library(readr)
+library(stats)
+library(ggplot2)
+
+# CSV 파일을 읽어 데이터프레임으로 변환
+df <- read_csv('LR Sample (hr-pass).csv')
+
+# 독립 변수와 종속 변수 설정
+X <- df$Hours
+y <- df$Pass
+
+# 로지스틱 회귀 모델 적합
+model <- glm(y ~ X, family = binomial)
+
+# 결과 요약 출력
+summary(model)
+
+# 모델 계수 출력
+intercept <- coef(model)[1]
+hours_coef <- coef(model)[2]
+cat(sprintf("Intercept (β0): %.4f\n", intercept))
+cat(sprintf("Hours (β1): %.4f\n", hours_coef))
+
+# 오즈 비율 계산
+odds_ratio <- exp(coef(model))
+cat(sprintf("Odds Ratio (OR) for Intercept (β0): %.4f\n", odds_ratio[1]))
+cat(sprintf("Odds Ratio (OR) for Hours (β1): %.4f\n", odds_ratio[2]))
+
+# 로지스틱 회귀식 출력
+logistic_eq <- sprintf("log(odds) = %.4f + %.4f * Hours", intercept, hours_coef)
+cat(sprintf("Logistic Regression Equation: %s\n", logistic_eq))
+
+# 각 시간대별 합격 확률 계산 함수
+calculate_prob <- function(hours, model_params) {
+  log_odds <- model_params[1] + model_params[2] * hours
+  probability <- 1 / (1 + exp(-log_odds))
+  return(probability)
+}
+
+# 독립 변수 범위 설정(시각화 보조 자료)
+hours_range <- seq(min(df$Hours), max(df$Hours), length.out = 300)
+
+# 각 시간대별 예측 확률 계산
+predicted_probs <- sapply(hours_range, calculate_prob, model_params = coef(model))
+
+# 예측 확률을 데이터 프레임으로 변환
+predicted_df <- data.frame(Hours = hours_range, Probability = predicted_probs)
+
+# 시각화
+ggplot() +
+  geom_point(data = df, aes(x = Hours, y = Pass), color = 'blue', size = 2) +
+  geom_line(data = predicted_df, aes(x = Hours, y = Probability), color = 'red', size = 1) +
+  labs(x = 'Hours', y = 'Pass', title = 'Logistic Regression') +
+  theme_minimal()
+
+
+p. 271
+
+data <- data.frame(
+  Hours = c(0.5, 0.75, 1, 1.25, 1.5, 1.75, 1.75, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 4, 4.25, 4.5, 4.75, 5, 5.5),
+  Pass = c(0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1)
+)
+
+` },
+            { title: 'Mission 33', code: `MISSION 33
+
+p. 272
+
+import pandas as pd
+from sklearn.tree import DecisionTreeClassifier
+import matplotlib.pyplot as plt
+from sklearn.tree import plot_tree
+
+# 데이터 로드
+data = pd.read_csv('DecisionTreeData.csv')
+
+# 특징과 라벨 분리
+X = data[['GMAT', 'GPA']]
+y = data['Pass']
+
+# 의사 결정 트리 모델 생성 및 학습
+model = DecisionTreeClassifier()
+model.fit(X, y)
+
+# 루트 노드에서 분할 기준 찾기
+feature_index_root = model.tree_.feature[0]
+threshold_root = model.tree_.threshold[0]
+
+# 자식 노드에서 분할 기준 찾기
+feature_index_child = model.tree_.feature[model.tree_.children_right[0]]
+threshold_child = model.tree_.threshold[model.tree_.children_right[0]]
+
+# 특징 이름 매핑
+feature_names = ['GMAT', 'GPA']
+feature_name_root = feature_names[feature_index_root]
+feature_name_child = feature_names[feature_index_child]
+
+# 의사 결정 트리 시각화
+plt.figure(figsize=(15, 10))
+plot_tree(model, feature_names=['GMAT', 'GPA'], class_names=['No', 'Yes'], filled=True, rounded=True)
+plt.show()
+
+# 필요한 값 반환
+feature_name_root, threshold_root, feature_name_child, threshold_child
+
+` },
+            { title: 'Mission 34', code: `MISSION 34
+
+p. 274
+
+# 필요한 라이브러리 불러오기
+library(rpart)
+library(partykit)
+
+# 데이터 생성
+data <- data.frame(
+  GMAT = c(650, 580, 600, 450, 700, 590, 400, 640),
+  GPA = c(2.75, 3.5, 3.5, 2.95, 3.25, 3.5, 3.85, 3.5),
+  Pass = as.factor(c('No', 'No', 'Yes', 'No', 'Yes', 'Yes', 'No', 'Yes'))
+)
+
+# 의사 결정 트리 모델 생성 및 학습
+model <- rpart(Pass ~ GMAT + GPA, data = data, method = "class",
+               control = rpart.control(minsplit = 1, minbucket = 1))
+
+# 의사 결정 트리를 party 객체로 변환
+party_model <- as.party(model)
+
+# 의사 결정 트리 시각화
+plot(party_model)
+
+# 루트 노드에서 분할 기준 찾기
+root_node <- party_model$node[[1]]
+feature_name_root <- names(data)[root_node$split$varid]
+threshold_root <- root_node$split$breaks
+
+# 자식 노드에서 분할 기준 찾기
+child_node <- party_model$node[[2]]
+feature_name_child <- names(data)[child_node$split$varid]
+threshold_child <- child_node$split$breaks
+
+# 필요한 값 반환
+feature_name_root
+threshold_root
+feature_name_child
+threshold_child
+
+` },
+            { title: 'Mission 35', code: `MISSION 35
+
+p. 277
+
+import pandas as pd
+
+# 파일 경로
+file_path = '클러스터링_sample.csv'
+
+# CSV 파일 읽기
+data = pd.read_csv(file_path)
+
+# 데이터의 처음 몇 행을 확인
+data.head()
+
+
+import matplotlib.pyplot as plt
+
+# D 항목의 데이터 선택
+d_values = data['D'].values.reshape(-1, 1)
+
+# 히스토그램으로 데이터 분포 확인
+plt.hist(d_values, bins=20, edgecolor='black')
+plt.title('Distribution of D values')
+plt.xlabel('Value of D')
+plt.ylabel('Frequency')
+plt.show()
+
+
+p. 278
+
+from sklearn.cluster import KMeans
+
+# 클러스터의 수 지정
+n_clusters = 3
+
+# K-평균 모델 생성
+kmeans = KMeans(n_clusters=n_clusters, random_state=0)
+
+# D 항목의 데이터에 대해 클러스터링 진행
+kmeans.fit(d_values)
+
+# 클러스터 중심점과 라벨
+centroids = kmeans.cluster_centers_
+labels = kmeans.labels_
+
+# 클러스터링 결과 시각화
+plt.scatter(d_values, [0]*len(d_values), c=labels, cmap='viridis')
+plt.scatter(centroids, [0]*len(centroids), c='red', marker='x')
+plt.title('K-Means Clustering of D values')
+plt.xlabel('Value of D')
+plt.yticks([])
+plt.show()
+
+# 클러스터 중심점 반환
+centroids.flatten()
+
+
+p. 279
+
+# D 항목의 값과 해당 값이 속한 클러스터 라벨을 DataFrame으로 만들기
+clustered_data = pd.DataFrame({
+    'D_values': d_values.flatten(),
+    'Cluster_Label': labels
+})
+
+# 결과 출력
+clustered_data.head(10)
+
+# 결과 테이블을 CSV 파일로 저장할 경로
+result_file_path = 'clustered_results.csv'
+
+# DataFrame을 CSV 파일로 저장
+clustered_data.to_csv(result_file_path, index=False)
+
+# 저장된 파일 경로 반환
+result_file_path
+
+
+p. 280
+
+import pandas as pd
+from sklearn.cluster import KMeans
+
+# 파일 경로
+file_path = '클러스터링_sample.csv'
+
+# 파일 읽기
+data_all = pd.read_csv(file_path)
+
+# A, B, C, D 항목 선택
+features = data_all[['A', 'B', 'C', 'D']]
+
+# K-평균 모델 생성 및 클러스터링 진행 (클러스터의 수는 3)
+kmeans_all = KMeans(n_clusters=3, random_state=0)
+kmeans_all.fit(features)
+
+# 클러스터 라벨
+labels_all = kmeans_all.labels_
+
+# 결과를 DataFrame에 추가
+data_all['Cluster_Label'] = labels_all
+
+# 클러스터링 결과를 CSV 파일로 저장할 경로
+result_all_file_path = 'clustered_all_results.csv'
+
+# DataFrame을 CSV 파일로 저장
+data_all.to_csv(result_all_file_path, index=False)
+
+# 저장된 파일 경로 반환
+result_all_file_path
+
+` },
+            { title: 'Mission 36', code: `MISSION 36
+
+p. 282
+
+library(readr)
+
+# 파일 경로
+file_path <- '클러스터링_sample.csv'
+
+# CSV 파일 읽기
+data <- read_csv(file_path)
+
+# 데이터의 처음 몇 행을 확인
+head(data)
+
+
+p. 283
+
+library(ggplot2)
+
+# 파일 경로
+file_path <- '클러스터링_sample.csv'
+
+# CSV 파일 읽기
+data <- read.csv(file_path)
+
+# D 항목의 데이터 선택
+d_values <- data$D
+
+# 히스토그램으로 데이터 분포 확인
+ggplot(data, aes(x = d_values)) +
+  geom_histogram(bins = 20, color = "black", fill = "white") +
+  labs(title = 'Distribution of D values',
+       x = 'Value of D',
+       y = 'Frequency')
+
+
+library(cluster)
+library(ggplot2)
+
+# 파일 경로
+file_path <- '클러스터링_sample.csv'
+
+# CSV 파일 읽기
+data <- read.csv(file_path)
+
+# D 항목의 데이터 선택
+d_values <- data$D
+
+# 클러스터의 수 지정
+n_clusters <- 3
+
+# K-평균 모델 생성 및 클러스터링 진행
+kmeans_result <- kmeans(d_values, centers = n_clusters, nstart = 25)
+
+# 클러스터 중심점과 라벨
+centroids <- kmeans_result$centers
+labels <- kmeans_result$cluster
+
+# 클러스터링 결과 시각화
+ggplot() +
+  geom_point(aes(x = d_values, y = 0, color = as.factor(labels))) +
+  geom_point(aes(x = centroids, y = 0), color = 'red', shape = 4) +
+  labs(title = 'K-Means Clustering of D values', x = 'Value of D') +
+  theme(axis.ticks.y = element_blank(),
+        axis.text.y = element_blank())
+
+# 클러스터 중심점 반환
+print(centroids)
+
+
+p. 284
+
+# D 항목의 값과 해당 값이 속한 클러스터 라벨을 데이터 프레임으로 만들기
+clustered_data <- data.frame(
+  D_values = d_values,
+  Cluster_Label = labels
+)
+
+# 결과 출력
+head(clustered_data, 10)
+
+# 결과 테이블을 CSV 파일로 저장할 경로
+result_file_path <- 'clustered_r_results.csv'
+
+# 데이터 프레임을 CSV 파일로 저장
+write.csv(clustered_data, result_file_path, row.names = FALSE)
+
+# 저장된 파일 경로 반환
+result_file_path
+
+
+p. 286
+
+library(cluster)
+
+# 파일 경로
+file_path <- '클러스터링_sample.csv'
+
+# 파일 읽기
+data_all <- read.csv(file_path)
+
+# A, B, C, D 항목 선택
+features <- data_all[, c('A', 'B', 'C', 'D')]
+
+# K-평균 모델 생성 및 클러스터링 진행 (클러스터의 수는 3)
+kmeans_all <- kmeans(features, centers = 3, nstart = 25)
+
+# 클러스터 라벨
+labels_all <- kmeans_all$cluster
+
+# 결과를 데이터 프레임에 추가
+data_all$Cluster_Label <- labels_all
+
+# 클러스터링 결과를 CSV 파일로 저장할 경로
+result_all_file_path <- 'clustered_all_r_results.csv'
+
+# 데이터 프레임을 CSV 파일로 저장
+write.csv(data_all, result_all_file_path, row.names = FALSE)
+
+# 저장된 파일 경로 반환
+result_all_file_path
+
+
+
+
+` },
+            { title: 'Mission 37', code: `MISSION 37
+
+p. 288
+
+from soynlp.word import WordExtractor
+from collections import Counter
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+
+# 파일 읽기
+with open('독도.txt', 'r', encoding='utf-8') as file:
+    text = file.read()
+
+# 단어 점수 계산
+word_extractor = WordExtractor()
+word_extractor.train([text])
+word_score_table = word_extractor.extract()
+
+# 명사 추출
+nouns = [word for word, score in word_score_table.items() if score.cohesion_forward > 0.2]
+
+count = Counter(nouns)
+
+# 워드 클라우드 설정
+wordcloud = WordCloud(
+    background_color='white',
+    width=800,
+    height=600
+).generate_from_frequencies(count)
+
+# 워드 클라우드 출력
+plt.imshow(wordcloud)
+plt.axis('off')
+plt.show()
+
+
+p. 289
+
+# (윗부분 생략)
+
+# 워드 클라우드 설정
+wordcloud = WordCloud(
+    font_path='NanumGothic.ttf', # 한글 폰트 파일 경로 지정
+    background_color='white',
+    width=800,
+    height=600
+).generate_from_frequencies(count)
+
+# (아랫부분 생략)
+
+
+[[참고]] nltk 라이브러리 적용 
+
+import nltk
+from nltk.tokenize import RegexpTokenizer
+from collections import Counter
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+
+# 파일 읽기
+with open('독도.txt', 'r', encoding='utf-8') as file:
+    text = file.read()
+
+# 정규 표현식을 이용하여 한국어 단어만 추출
+# (한국어 단어는 일반적으로 두 글자 이상으로 간주)
+tokenizer = RegexpTokenizer('[가-힣]{2,}')
+tokens = tokenizer.tokenize(text)
+
+# 단어 빈도 계산
+count = Counter(tokens)
+
+# 워드 클라우드 설정
+wordcloud = WordCloud(
+    background_color='white',
+    font_path='NanumGothic.ttf',  # 한글 폰트 지정 
+    width=800,
+    height=600
+).generate_from_frequencies(count)
+
+# 워드 클라우드 출력
+plt.imshow(wordcloud, interpolation='bilinear')
+plt.axis('off')
+plt.show()
+
+
+
+
+` },
+            { title: 'Mission 38', code: `MISSION 38
+
+p. 291
+
+library(wordcloud)
+library(RColorBrewer)
+
+# 파일 읽기
+file_path <- "독도.txt"
+text <- tolower(readLines(file_path, encoding = "UTF-8"))
+
+# 텍스트를 단어로 분할
+words <- unlist(strsplit(text, split = "\\W")) # “\\W”로 텍스트를 단어가 아닌 문자(공백, 구두점, 특수 문자 등)를 기준으로 분할
+
+# 단어의 빈도 계산
+word_freq <- table(words)
+word_freq <- sort(word_freq, decreasing = TRUE)
+
+# 불필요한 단어 제거 (예: 길이가 1인 단어)
+word_freq <- word_freq[nchar(names(word_freq)) > 1]
+
+# 워드 클라우드 생성
+set.seed(42) # 동일한 패턴의 난수 생성
+wordcloud(words = names(word_freq), freq = word_freq, min.freq = 2, max.words = 200, random.order = FALSE, colors = brewer.pal(8, "Dark2"))
+
+
+p. 292
+
+library(showtext)
+library(wordcloud)
+library(RColorBrewer)
+
+# 한글 폰트 파일 경로 지정
+font_add("my_font", "NanumGothic.ttf")
+
+# showtext 자동 사용 활성화
+showtext_auto()
+
+# 파일 읽기(이하 동일)
+
+
+
+` }
+        ];
+
+        let current = 0;
+        const label = document.getElementById('mission-label');
+        const content = document.getElementById('code-content');
+        const footerCredit = document.getElementById('footer-credit');
+		const tabsContainer = document.getElementById('tabs');
+
+// 탭 버튼 생성
+missions.forEach((m, idx) => {
+  const tab = document.createElement('button');
+  tab.textContent = m.title;
+  tab.classList.add('tab');
+  tab.addEventListener('click', () => {
+    current = idx;
+    updateView();
+    highlightActiveTab();
+  });
+  tabsContainer.appendChild(tab);
+});
+
+// 활성 탭 강조 함수
+function highlightActiveTab() {
+  const tabs = tabsContainer.querySelectorAll('.tab');
+  tabs.forEach((t, i) => {
+    t.classList.toggle('active', i === current);
+  });
+}
+
+// updateView() 마지막에 탭 강조 호출
+function updateView() {
+  label.textContent = missions[current].title;
+  content.textContent = missions[current].code;
+  highlightActiveTab();
+}
+
+
+        footerCredit.textContent = 'Chulwoo Park, ' + new Date().getFullYear();
+
+        updateView();
+    </script>
+</body>
+</html>
